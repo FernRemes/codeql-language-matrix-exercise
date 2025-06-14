@@ -5,15 +5,15 @@ on:
     branches: [main]
 
 jobs:
-  analyze:
-    name: Analyze code
-    strategy:
-          matrix:
-            language: ['python', 'cpp']
+  
     
     
   CodeQL-Build:
     runs-on: ubuntu-latest
+    
+    strategy:
+          matrix:
+            language: ['python', 'cpp']
 
     permissions:
       # required for all workflows
@@ -27,10 +27,6 @@ jobs:
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v1
-        
-            
-        # with:
-        #   language: python, java, cpp, csharp
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
